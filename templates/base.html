@@ -1,19 +1,46 @@
-<!-- In templates/base.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Charity SaaS{% endblock %}</title>
-    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
-    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap)" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-gray-50">
-    <div class="min-h-screen">
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-30 bg-white shadow transition-all">
+        <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2">
+                <span class="text-2xl font-extrabold text-indigo-600 tracking-tight">CharitySaaS</span>
+            </a>
+            <nav class="hidden md:flex gap-8 text-gray-700 font-medium">
+                <a href="/" class="hover:text-indigo-600 transition">Home</a>
+                <a href="#features" class="hover:text-indigo-600 transition">Features</a>
+                <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+            </nav>
+            <a href="/login" class="inline-block rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition">Sign In</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1">
         {% block content %}{% endblock %}
-    </div>
+    </main>
+
+    <!-- Modern Footer -->
+    <footer class="bg-white border-t mt-8">
+        <div class="mx-auto max-w-7xl px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-lg font-bold text-indigo-600">CharitySaaS</div>
+            <div class="text-gray-500 text-sm">&copy; {{ now|date:'Y' }} CharitySaaS. All rights reserved.</div>
+            <div class="flex gap-4">
+                <a href="#" class="text-gray-400 hover:text-indigo-600 transition" aria-label="Twitter"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.633 7.997c.013.176.013.353.013.53 0 5.386-4.099 11.6-11.6 11.6-2.308 0-4.457-.676-6.263-1.844.322.038.644.05.978.05 1.917 0 3.683-.644 5.093-1.736a4.09 4.09 0 01-3.817-2.834c.256.038.512.064.781.064.377 0 .753-.05 1.105-.144a4.087 4.087 0 01-3.273-4.013v-.05a4.13 4.13 0 001.849.522A4.088 4.088 0 012.8 6.13a11.6 11.6 0 008.413 4.27c-.13-.504-.195-1.036-.195-1.58A4.087 4.087 0 0115.1 4.5a8.14 8.14 0 002.59-.987 4.08 4.08 0 01-1.796 2.257 8.19 8.19 0 002.357-.632 8.8 8.8 0 01-2.048 2.26z"/></svg></a>
+                <a href="#" class="text-gray-400 hover:text-indigo-600 transition" aria-label="GitHub"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.867 8.186 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.004.07 1.533 1.032 1.533 1.032.892 1.53 2.341 1.088 2.91.833.091-.647.35-1.088.636-1.339-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.447-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.338 1.909-1.296 2.748-1.026 2.748-1.026.547 1.378.203 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.338 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.339-.012 2.422-.012 2.751 0 .269.18.58.688.482C19.135 20.203 22 16.447 22 12.021 22 6.484 17.523 2 12 2z"/></svg></a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
